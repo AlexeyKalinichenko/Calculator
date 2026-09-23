@@ -242,17 +242,18 @@
   --text-muted: #8fa3c7;
   --text-faint: #5a6789;
 
-  --display-bg: #080914;
-  --display-border: 1px solid #1c1f3d;
+  --display-bg: #ffe600;
+  --display-border: 1px solid #fff27a;
+  --display-shadow: 0 0 24px rgba(255, 230, 0, 0.55);
   --display-padding: 26px 14px 18px;
   --display-margin: 8px 0 14px;
-  --expr-color: #ff7be5;
+  --expr-color: #5c4d00;
   --expr-font: "Orbitron", sans-serif;
   --result-font: "Orbitron", sans-serif;
   --result-size: 44px;
   --result-weight: 400;
-  --result-color: #00f0ff;
-  --result-glow: 0 0 8px rgba(0, 240, 255, 0.8), 0 0 24px rgba(0, 240, 255, 0.45);
+  --result-color: #0d0e1a;
+  --result-glow: none;
   --result-spacing: 0;
 
   --key-h: 64px;
