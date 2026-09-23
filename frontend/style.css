@@ -4,57 +4,304 @@
   padding: 0;
 }
 
-/* ---------- Цветовые темы ---------- */
+/* =========================================================
+   Стили оформления. Переключаются атрибутом data-style на <html>:
+   ios | glass | neumorph | neon
+   ========================================================= */
 
-/* Тёмная тема (по умолчанию) */
-:root {
-  --page-bg: #1e1f24;
-  --calc-bg: #2b2d34;
-  --calc-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+/* ---------- 1. Минимализм iOS (по умолчанию) ---------- */
+:root,
+:root[data-style="ios"] {
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+  --page-bg: #1c1c1e;
+
+  --calc-bg: #000000;
+  --calc-border: 1px solid transparent;
+  --calc-radius: 44px;
+  --calc-padding: 20px 18px 24px;
+  --calc-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  --calc-blur: none;
+
   --text: #ffffff;
-  --text-muted: #9a9ca5;
-  --text-faint: #6b6d75;
-  --key-bg: #3d4049;
+  --text-muted: #8e8e93;
+  --text-faint: #636366;
+
+  --display-bg: transparent;
+  --display-border: 1px solid transparent;
+  --display-shadow: none;
+  --display-padding: 36px 10px 16px;
+  --display-margin: 0;
+  --expr-color: #8e8e93;
+  --expr-font: inherit;
+  --result-font: inherit;
+  --result-size: 72px;
+  --result-weight: 200;
+  --result-color: #ffffff;
+  --result-glow: none;
+  --result-spacing: -2px;
+
+  --gap: 12px;
+  --key-h: 68px;
+  --key-radius: 999px;
+  --key-size: 30px;
+  --key-weight: 400;
+
+  --key-bg: #333333;
   --key-text: #ffffff;
-  --key-fn-bg: #a5a7ae;
-  --key-fn-text: #1e1f24;
+  --key-border: 1px solid transparent;
+  --key-shadow: none;
+  --key-glow: none;
+
+  --fn-bg: #a5a5a5;
+  --fn-text: #000000;
+  --fn-border: 1px solid transparent;
+  --fn-glow: none;
+
   --accent: #ff9f0a;
-  --accent-text: #ffffff;
-  --accent-active-bg: #ffffff;
-  --eq-bg: #34c759;
-  --panel-bg: #23252b;
-  --divider: #3d4049;
-  --item-divider: #2f3139;
-  --item-hover: #2f3139;
+  --op-bg: var(--accent);
+  --op-text: #ffffff;
+  --op-border: 1px solid transparent;
+  --op-shadow: none;
+  --op-glow: none;
+  --opa-bg: #ffffff;
+  --opa-text: var(--accent);
+  --opa-shadow: none;
+
+  --eq-bg: var(--accent);
+  --eq-text: #ffffff;
+  --eq-shadow: none;
+
+  --btn-bg: transparent;
+  --btn-border: 1px solid transparent;
+  --btn-shadow: none;
+  --btn-hover-bg: #1c1c1e;
+  --btn-text: #8e8e93;
+  --btn-hover-text: #ffffff;
+
+  --panel-bg: #1c1c1e;
+  --panel-border: 1px solid transparent;
+  --panel-blur: none;
+  --divider: #2c2c2e;
+  --item-hover: #2c2c2e;
   --error-bg: rgba(255, 69, 58, 0.15);
   --error-text: #ff6b61;
+
   color-scheme: dark;
 }
 
-/* Светлая тема */
-:root[data-theme="light"] {
-  --page-bg: #eef0f4;
-  --calc-bg: #ffffff;
-  --calc-shadow: 0 20px 50px rgba(30, 40, 60, 0.15);
-  --text: #1c1d21;
-  --text-muted: #6b6f7a;
-  --text-faint: #a0a3ab;
-  --key-bg: #f0f1f4;
-  --key-text: #1c1d21;
-  --key-fn-bg: #d9dbe0;
-  --key-fn-text: #1c1d21;
-  --accent: #ff9500;
-  --accent-text: #ffffff;
-  --accent-active-bg: #1c1d21;
-  --eq-bg: #30b350;
-  --panel-bg: #f7f8fa;
-  --divider: #dfe1e6;
-  --item-divider: #eceef1;
-  --item-hover: #eceef1;
-  --error-bg: rgba(255, 59, 48, 0.1);
-  --error-text: #d70015;
+/* ---------- 2. Стекло (glassmorphism) ---------- */
+:root[data-style="glass"] {
+  --font: "Manrope", -apple-system, sans-serif;
+  --page-bg: linear-gradient(145deg, #4f46e5 0%, #9333ea 45%, #f472b6 80%, #fb923c 100%);
+
+  --calc-bg: rgba(255, 255, 255, 0.14);
+  --calc-border: 1px solid rgba(255, 255, 255, 0.35);
+  --calc-radius: 32px;
+  --calc-padding: 20px;
+  --calc-shadow: 0 24px 60px rgba(40, 10, 80, 0.35);
+  --calc-blur: blur(24px);
+
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.8);
+  --text-faint: rgba(255, 255, 255, 0.6);
+
+  --display-bg: rgba(255, 255, 255, 0.10);
+  --display-border: 1px solid rgba(255, 255, 255, 0.2);
+  --display-padding: 28px 16px 20px;
+  --display-margin: 8px 0 16px;
+  --expr-color: rgba(255, 255, 255, 0.8);
+  --result-size: 56px;
+  --result-weight: 300;
+  --result-color: #ffffff;
+  --result-spacing: 0;
+
+  --key-h: 64px;
+  --key-radius: 20px;
+  --key-size: 24px;
+  --key-weight: 500;
+
+  --key-bg: rgba(255, 255, 255, 0.16);
+  --key-text: #ffffff;
+  --key-border: 1px solid rgba(255, 255, 255, 0.28);
+
+  --fn-bg: rgba(255, 255, 255, 0.08);
+  --fn-text: #ffffff;
+  --fn-border: 1px solid rgba(255, 255, 255, 0.2);
+
+  --accent: #7c3aed;
+  --op-bg: rgba(255, 255, 255, 0.32);
+  --op-text: #ffffff;
+  --op-border: 1px solid rgba(255, 255, 255, 0.5);
+  --opa-bg: #ffffff;
+  --opa-text: var(--accent);
+
+  --eq-bg: #ffffff;
+  --eq-text: var(--accent);
+  --eq-shadow: 0 8px 24px rgba(40, 10, 80, 0.3);
+
+  --btn-bg: rgba(255, 255, 255, 0.12);
+  --btn-border: 1px solid rgba(255, 255, 255, 0.25);
+  --btn-hover-bg: rgba(255, 255, 255, 0.25);
+  --btn-text: #ffffff;
+  --btn-hover-text: #ffffff;
+
+  --panel-bg: rgba(70, 30, 130, 0.55);
+  --panel-border: 1px solid rgba(255, 255, 255, 0.3);
+  --panel-blur: blur(24px);
+  --divider: rgba(255, 255, 255, 0.25);
+  --item-hover: rgba(255, 255, 255, 0.12);
+  --error-bg: rgba(255, 255, 255, 0.2);
+  --error-text: #ffffff;
+
+  color-scheme: dark;
+}
+
+/* ---------- 3. Неоморфизм ---------- */
+:root[data-style="neumorph"] {
+  --font: "Nunito", -apple-system, sans-serif;
+  --neu-bg: #e3e7ee;
+  --neu-raise: 6px 6px 14px #c1c7d2, -6px -6px 14px #ffffff;
+  --neu-inset: inset 5px 5px 10px #c1c7d2, inset -5px -5px 10px #ffffff;
+  --page-bg: var(--neu-bg);
+
+  --calc-bg: var(--neu-bg);
+  --calc-border: 1px solid transparent;
+  --calc-radius: 36px;
+  --calc-padding: 24px;
+  --calc-shadow: 16px 16px 36px #bcc2cd, -16px -16px 36px #ffffff;
+
+  --text: #2f3644;
+  --text-muted: #5c6577;
+  --text-faint: #8a92a3;
+
+  --display-bg: var(--neu-bg);
+  --display-shadow: var(--neu-inset);
+  --display-padding: 24px 18px 18px;
+  --display-margin: 14px 0 20px;
+  --expr-color: #6b7385;
+  --result-size: 52px;
+  --result-weight: 300;
+  --result-color: #2f3644;
+  --result-spacing: 0;
+
+  --gap: 16px;
+  --key-h: 60px;
+  --key-radius: 20px;
+  --key-size: 24px;
+  --key-weight: 700;
+
+  --key-bg: var(--neu-bg);
+  --key-text: #3f4757;
+  --key-shadow: var(--neu-raise);
+
+  --fn-bg: var(--neu-bg);
+  --fn-text: #6b7385;
+
+  --accent: #d4502f;
+  --op-bg: var(--neu-bg);
+  --op-text: var(--accent);
+  --op-shadow: var(--neu-raise);
+  --opa-bg: var(--neu-bg);
+  --opa-text: var(--accent);
+  --opa-shadow: var(--neu-inset);
+
+  --eq-bg: var(--accent);
+  --eq-text: #ffffff;
+  --eq-shadow: var(--neu-raise);
+
+  --btn-bg: var(--neu-bg);
+  --btn-shadow: var(--neu-raise);
+  --btn-hover-bg: var(--neu-bg);
+  --btn-text: #5c6577;
+  --btn-hover-text: #2f3644;
+
+  --panel-bg: var(--neu-bg);
+  --divider: #cfd4dd;
+  --item-hover: #d8dde5;
+  --error-bg: rgba(212, 80, 47, 0.12);
+  --error-text: #b23d20;
+
   color-scheme: light;
 }
+
+/* ---------- 4. Неон ---------- */
+:root[data-style="neon"] {
+  --font: "Space Grotesk", -apple-system, sans-serif;
+  --page-bg:
+    linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px) 0 0 / 28px 28px,
+    #06060c;
+
+  --calc-bg: #0d0e1a;
+  --calc-border: 1px solid rgba(0, 240, 255, 0.35);
+  --calc-radius: 28px;
+  --calc-padding: 20px;
+  --calc-shadow: 0 0 40px rgba(0, 240, 255, 0.18), 0 30px 60px rgba(0, 0, 0, 0.6);
+
+  --text: #e6f7ff;
+  --text-muted: #8fa3c7;
+  --text-faint: #5a6789;
+
+  --display-bg: #080914;
+  --display-border: 1px solid #1c1f3d;
+  --display-padding: 26px 14px 18px;
+  --display-margin: 8px 0 14px;
+  --expr-color: #ff7be5;
+  --expr-font: "Orbitron", sans-serif;
+  --result-font: "Orbitron", sans-serif;
+  --result-size: 44px;
+  --result-weight: 400;
+  --result-color: #00f0ff;
+  --result-glow: 0 0 8px rgba(0, 240, 255, 0.8), 0 0 24px rgba(0, 240, 255, 0.45);
+  --result-spacing: 0;
+
+  --key-h: 64px;
+  --key-radius: 14px;
+  --key-size: 24px;
+  --key-weight: 500;
+
+  --key-bg: #141629;
+  --key-text: #e6f7ff;
+  --key-border: 1px solid #262a4d;
+
+  --fn-bg: #141629;
+  --fn-text: #b8ff3c;
+  --fn-border: 1px solid rgba(184, 255, 60, 0.45);
+  --fn-glow: 0 0 8px rgba(184, 255, 60, 0.6);
+
+  --accent: #ff2bd6;
+  --op-bg: #160c22;
+  --op-text: var(--accent);
+  --op-border: 1px solid var(--accent);
+  --op-shadow: 0 0 12px rgba(255, 43, 214, 0.25);
+  --op-glow: 0 0 10px var(--accent);
+  --opa-bg: var(--accent);
+  --opa-text: #0d0e1a;
+  --opa-shadow: 0 0 22px var(--accent);
+
+  --eq-bg: #00f0ff;
+  --eq-text: #06060c;
+  --eq-shadow: 0 0 24px rgba(0, 240, 255, 0.7);
+
+  --btn-bg: #11132a;
+  --btn-border: 1px solid #23264a;
+  --btn-hover-bg: #1a1d3a;
+  --btn-text: #8fa3c7;
+  --btn-hover-text: #00f0ff;
+
+  --panel-bg: #0b0c18;
+  --panel-border: 1px solid rgba(0, 240, 255, 0.3);
+  --divider: #1c1f3d;
+  --item-hover: #141629;
+  --error-bg: rgba(255, 43, 214, 0.12);
+  --error-text: #ff7be5;
+
+  color-scheme: dark;
+}
+
+/* =========================================================
+   Разметка
+   ========================================================= */
 
 body {
   min-height: 100vh;
@@ -62,36 +309,70 @@ body {
   align-items: center;
   justify-content: center;
   background: var(--page-bg);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  transition: background 0.2s;
+  font-family: var(--font);
+  padding: 16px;
+}
+
+/* Цветные «пятна» за стеклом */
+:root[data-style="glass"] body::before,
+:root[data-style="glass"] body::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+}
+:root[data-style="glass"] body::before {
+  width: 320px; height: 320px;
+  top: 12%; left: calc(50% - 300px);
+  background: #22d3ee; opacity: 0.55; filter: blur(60px);
+}
+:root[data-style="glass"] body::after {
+  width: 280px; height: 280px;
+  bottom: 10%; left: calc(50% + 60px);
+  background: #fde047; opacity: 0.45; filter: blur(65px);
 }
 
 .calculator {
   position: relative;
-  width: 320px;
-  padding: 20px;
-  border-radius: 24px;
+  z-index: 1;
+  width: 340px;
+  padding: var(--calc-padding);
+  border-radius: var(--calc-radius);
+  border: var(--calc-border);
   background: var(--calc-bg);
   box-shadow: var(--calc-shadow);
-  transition: background 0.2s;
+  -webkit-backdrop-filter: var(--calc-blur);
+  backdrop-filter: var(--calc-blur);
+  color: var(--text);
+  transition: background 0.3s, box-shadow 0.3s;
 }
 
 .display {
-  padding: 16px 8px 20px;
+  padding: var(--display-padding);
+  margin: var(--display-margin);
+  border-radius: 22px;
+  border: var(--display-border);
+  background: var(--display-bg);
+  box-shadow: var(--display-shadow);
   text-align: right;
-  color: var(--text);
   overflow: hidden;
 }
 
 .expression {
-  min-height: 22px;
-  font-size: 16px;
-  color: var(--text-muted);
+  min-height: 24px;
+  font-family: var(--expr-font, inherit);
+  font-size: 18px;
+  color: var(--expr-color);
 }
 
 .result {
-  font-size: 48px;
-  font-weight: 300;
+  font-family: var(--result-font);
+  font-size: var(--result-size);
+  font-weight: var(--result-weight);
+  letter-spacing: var(--result-spacing);
+  line-height: 1.1;
+  color: var(--result-color);
+  text-shadow: var(--result-glow);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -100,55 +381,100 @@ body {
 .keys {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  gap: var(--gap);
 }
 
 .key {
-  height: 60px;
-  border: none;
-  border-radius: 50%;
-  font-size: 24px;
+  height: var(--key-h);
+  border-radius: var(--key-radius);
+  border: var(--key-border);
+  font-family: inherit;
+  font-size: var(--key-size);
+  font-weight: var(--key-weight);
   color: var(--key-text);
   background: var(--key-bg);
+  box-shadow: var(--key-shadow);
+  text-shadow: var(--key-glow);
   cursor: pointer;
-  transition: filter 0.1s, transform 0.05s;
+  transition: filter 0.1s, transform 0.05s, box-shadow 0.15s, background 0.3s;
 }
 
 .key:hover { filter: brightness(1.15); }
-:root[data-theme="light"] .key:hover { filter: brightness(0.95); }
 .key:active { transform: scale(0.95); }
 
-.key.fn { background: var(--key-fn-bg); color: var(--key-fn-text); }
-.key.op { background: var(--accent); color: var(--accent-text); }
-.key.op.active { background: var(--accent-active-bg); color: var(--accent); }
-.key.eq { background: var(--eq-bg); color: #fff; }
+.key.fn {
+  background: var(--fn-bg);
+  color: var(--fn-text);
+  border: var(--fn-border);
+  text-shadow: var(--fn-glow);
+}
+.key.op {
+  background: var(--op-bg);
+  color: var(--op-text);
+  border: var(--op-border);
+  box-shadow: var(--op-shadow);
+  text-shadow: var(--op-glow);
+  font-size: calc(var(--key-size) + 4px);
+}
+.key.op.active {
+  background: var(--opa-bg);
+  color: var(--opa-text);
+  box-shadow: var(--opa-shadow);
+  text-shadow: none;
+}
+.key.eq {
+  background: var(--eq-bg);
+  color: var(--eq-text);
+  border: 1px solid transparent;
+  box-shadow: var(--eq-shadow);
+  font-size: calc(var(--key-size) + 4px);
+}
+
+/* Неоморфизм: нажатие «вдавливает» кнопку, без подсветки */
+:root[data-style="neumorph"] .key:hover { filter: none; }
+:root[data-style="neumorph"] .key:active {
+  transform: none;
+  box-shadow: var(--neu-inset);
+}
+:root[data-style="neumorph"] .key.eq:active { filter: brightness(0.92); }
 
 /* ---------- Верхняя панель ---------- */
 .topbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 8px;
 }
 
-.history-toggle,
-.theme-toggle {
-  border: none;
-  background: none;
-  color: var(--text-muted);
-  font-size: 14px;
+.topbar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 6px 12px;
+  border: var(--btn-border);
+  border-radius: 999px;
+  background: var(--btn-bg);
+  box-shadow: var(--btn-shadow);
+  color: var(--btn-text);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
   cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
 }
 
-.history-toggle:hover,
-.history-toggle.active,
-.theme-toggle:hover { color: var(--text); background: var(--key-bg); }
+.topbar-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
 
-.theme-toggle {
-  font-size: 18px;
-  line-height: 1;
-  padding: 4px 6px;
+.topbar-btn:hover,
+.topbar-btn.active {
+  background: var(--btn-hover-bg);
+  color: var(--btn-hover-text);
+}
+
+:root[data-style="neumorph"] .topbar-btn.active { box-shadow: var(--neu-inset); }
+
+.style-toggle {
   position: relative;
   z-index: 2; /* доступна и при открытой истории */
 }
@@ -156,15 +482,18 @@ body {
 /* ---------- История вычислений ---------- */
 .history {
   position: absolute;
-  left: 20px;
-  right: 20px;
-  top: 52px;
-  bottom: 20px;
+  left: 16px;
+  right: 16px;
+  top: 64px;
+  bottom: 16px;
   display: flex;
   flex-direction: column;
   padding: 12px;
-  border-radius: 16px;
+  border-radius: 20px;
+  border: var(--panel-border);
   background: var(--panel-bg);
+  -webkit-backdrop-filter: var(--panel-blur);
+  backdrop-filter: var(--panel-blur);
   color: var(--text);
   z-index: 1;
 }
@@ -178,15 +507,19 @@ body {
   padding-bottom: 8px;
   border-bottom: 1px solid var(--divider);
   font-size: 16px;
+  font-weight: 600;
 }
 
 .history-clear {
   border: none;
   background: none;
   color: var(--accent);
+  font-family: inherit;
   font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
 }
+:root[data-style="glass"] .history-clear { color: #ffffff; text-decoration: underline; }
 
 .history-list {
   list-style: none;
@@ -195,9 +528,9 @@ body {
 }
 
 .history-item {
-  padding: 10px 4px;
+  padding: 10px 6px;
   text-align: right;
-  border-bottom: 1px solid var(--item-divider);
+  border-bottom: 1px solid var(--divider);
   cursor: pointer;
   border-radius: 8px;
 }

@@ -4,24 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Калькулятор</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;600;700&family=Nunito:wght@300;600;700&family=Orbitron:wght@400;600&family=Space+Grotesk:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="style.css">
   <script>
-    // Применяем тему до отрисовки, чтобы страница не мигала при загрузке
+    // Применяем стиль до отрисовки, чтобы страница не мигала при загрузке
     (function () {
-      var theme = null;
-      try { theme = localStorage.getItem("theme"); } catch (e) {}
-      if (!theme) {
-        theme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
-      }
-      document.documentElement.dataset.theme = theme;
+      var styles = ["ios", "glass", "neumorph", "neon"];
+      var style = null;
+      try { style = localStorage.getItem("style"); } catch (e) {}
+      if (styles.indexOf(style) === -1) style = "ios";
+      document.documentElement.dataset.style = style;
     })();
   </script>
 </head>
 <body>
   <main class="calculator">
     <div class="topbar">
-      <button class="history-toggle" id="history-toggle" title="История (H)">🕘 История</button>
-      <button class="theme-toggle" id="theme-toggle" title="Сменить тему (T)">☀️</button>
+      <button class="topbar-btn history-toggle" id="history-toggle" title="История (H)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <span>История</span>
+      </button>
+      <button class="topbar-btn style-toggle" id="style-toggle" title="Сменить стиль (T)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.8 1.8-1.8 0-.5-.2-.9-.5-1.2-.3-.3-.5-.8-.5-1.2 0-1 .8-1.8 1.8-1.8H17a4 4 0 0 0 4-4c0-4.4-4-8-9-8z"/><circle cx="7.5" cy="11" r="1.2"/><circle cx="10.5" cy="7" r="1.2"/><circle cx="15" cy="7.5" r="1.2"/></svg>
+        <span id="style-name">iOS</span>
+      </button>
     </div>
 
     <div class="display">
@@ -60,7 +68,7 @@
       <button class="key" data-digit="3">3</button>
       <button class="key op" data-op="+">+</button>
 
-      <button class="key" data-action="backspace">⌫</button>
+      <button class="key" data-action="backspace" aria-label="Стереть">⌫</button>
       <button class="key" data-digit="0">0</button>
       <button class="key" data-action="dot">,</button>
       <button class="key eq" data-action="equals">=</button>

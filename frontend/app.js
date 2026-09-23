@@ -229,26 +229,33 @@ historyListEl.addEventListener("click", (e) => {
   render();
 });
 
-// ---------- Тема ----------
-const themeToggleEl = document.getElementById("theme-toggle");
+// ---------- Стиль оформления ----------
+const STYLES = [
+  { id: "ios", name: "iOS" },
+  { id: "glass", name: "Стекло" },
+  { id: "neumorph", name: "Неоморфизм" },
+  { id: "neon", name: "Неон" },
+];
+const styleToggleEl = document.getElementById("style-toggle");
+const styleNameEl = document.getElementById("style-name");
 
-function applyTheme(theme) {
-  document.documentElement.dataset.theme = theme;
-  // Иконка показывает, на какую тему переключит кнопка
-  themeToggleEl.textContent = theme === "dark" ? "☀️" : "🌙";
-  themeToggleEl.title = theme === "dark"
-    ? "Светлая тема (T)"
-    : "Тёмная тема (T)";
+function applyStyle(id) {
+  const style = STYLES.find((s) => s.id === id) || STYLES[0];
+  document.documentElement.dataset.style = style.id;
+  styleNameEl.textContent = style.name;
+  styleToggleEl.setAttribute("aria-label", `Стиль: ${style.name}. Сменить (T)`);
 }
 
-function toggleTheme() {
-  const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-  applyTheme(next);
-  try { localStorage.setItem("theme", next); } catch {}
+// Переключаем стили по кругу: iOS → Стекло → Неоморфизм → Неон → iOS
+function nextStyle() {
+  const i = STYLES.findIndex((s) => s.id === document.documentElement.dataset.style);
+  const next = STYLES[(i + 1) % STYLES.length].id;
+  applyStyle(next);
+  try { localStorage.setItem("style", next); } catch {}
 }
 
-themeToggleEl.addEventListener("click", toggleTheme);
-applyTheme(document.documentElement.dataset.theme || "dark");
+styleToggleEl.addEventListener("click", nextStyle);
+applyStyle(document.documentElement.dataset.style);
 
 // Клики по кнопкам
 document.querySelector(".keys").addEventListener("click", (e) => {
@@ -290,7 +297,7 @@ document.addEventListener("keydown", (e) => {
   } else if (k === "h" || k === "H" || k === "р" || k === "Р") {
     toggleHistory();
   } else if (k === "t" || k === "T" || k === "е" || k === "Е") {
-    toggleTheme();
+    nextStyle();
   }
 });
 
