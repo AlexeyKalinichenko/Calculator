@@ -135,7 +135,7 @@
   --opa-bg: #ffffff;
   --opa-text: var(--accent);
 
-  --eq-bg: #ffffff;
+  --eq-bg: #b8ff3c;
   --eq-text: var(--accent);
   --eq-shadow: 0 8px 24px rgba(40, 10, 80, 0.3);
 
@@ -438,6 +438,12 @@ body {
   box-shadow: var(--neu-inset);
 }
 :root[data-style="neumorph"] .key.eq:active { filter: brightness(0.92); }
+
+/* Неоморфизм: кнопка «9» выделена синим */
+:root[data-style="neumorph"] .key[data-digit="9"] {
+  background: #1a5fd8;
+  color: #8fa3c7;
+}
 
 /* ---------- Верхняя панель ---------- */
 .topbar {
