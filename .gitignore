@@ -1,0 +1,11 @@
+# История вычислений — локальные данные
+history.txt
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# macOS
+.DS_Store
