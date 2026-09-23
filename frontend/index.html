@@ -5,11 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Калькулятор</title>
   <link rel="stylesheet" href="style.css">
+  <script>
+    // Применяем тему до отрисовки, чтобы страница не мигала при загрузке
+    (function () {
+      var theme = null;
+      try { theme = localStorage.getItem("theme"); } catch (e) {}
+      if (!theme) {
+        theme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      }
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
 </head>
 <body>
   <main class="calculator">
     <div class="topbar">
       <button class="history-toggle" id="history-toggle" title="История (H)">🕘 История</button>
+      <button class="theme-toggle" id="theme-toggle" title="Сменить тему (T)">☀️</button>
     </div>
 
     <div class="display">
