@@ -229,6 +229,27 @@ historyListEl.addEventListener("click", (e) => {
   render();
 });
 
+// ---------- Тема ----------
+const themeToggleEl = document.getElementById("theme-toggle");
+
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  // Иконка показывает, на какую тему переключит кнопка
+  themeToggleEl.textContent = theme === "dark" ? "☀️" : "🌙";
+  themeToggleEl.title = theme === "dark"
+    ? "Светлая тема (T)"
+    : "Тёмная тема (T)";
+}
+
+function toggleTheme() {
+  const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  applyTheme(next);
+  try { localStorage.setItem("theme", next); } catch {}
+}
+
+themeToggleEl.addEventListener("click", toggleTheme);
+applyTheme(document.documentElement.dataset.theme || "dark");
+
 // Клики по кнопкам
 document.querySelector(".keys").addEventListener("click", (e) => {
   const btn = e.target.closest("button");
@@ -268,6 +289,8 @@ document.addEventListener("keydown", (e) => {
     handleAction("percent");
   } else if (k === "h" || k === "H" || k === "р" || k === "Р") {
     toggleHistory();
+  } else if (k === "t" || k === "T" || k === "е" || k === "Е") {
+    toggleTheme();
   }
 });
 
